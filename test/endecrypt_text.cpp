@@ -53,7 +53,36 @@ FCT_BGN()
 	FCT_SUITE_END();
 
 	FCT_SUITE_BGN(MUGI)
-	{}
+	{
+		charz given_cipher=
+		{
+			//given cipher
+		};
+
+		charz cipher; std::string plain; // the results
+
+		FCT_TEST_BGN(mugi_encrypt)
+		{
+			ys::mugi::estream estr;
+			estr<<ys::key(password);
+			estr<<ys::iv();
+			estr<<given_plain<<ys::endd;
+			estr>>cipher;
+			fct_chk(cipher==given_cipher);
+		}
+		FCT_TEST_END();
+		
+		FCT_TEST_END(mugi_decrypt)
+		{
+			ys::mugi::dstream dstr;
+			dstr.key(password);
+			estr<<ys::iv();
+			dstr<<cipher;
+			dstr>>plain;
+			fct_chk(plain==given_plain);
+		}
+		FCT_TEST_END();		
+	}
 	FCT_SUITE_END();
 
 	FCT_SUITE_BGN(AES)
