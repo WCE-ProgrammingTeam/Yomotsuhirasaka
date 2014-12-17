@@ -129,7 +129,19 @@ FCT_BGN()
 	FCT_SUITE_END();
 
 	FCT_SUITE_BGN(Twofish)
-	{}
+	{
+	
+		FCT_TEST_BGN(twofish_CBC_encrypt)
+		{
+			ys::arcfour::estream estr;
+			estr << ys::key(password);
+			estr << given_plain << ys::endd;
+			estr >> cipher;
+			fct_chk(cipher == given_cipher);
+		}
+		FCT_TEST_END();
+
+	}
 	FCT_SUITE_END();
 
 }
