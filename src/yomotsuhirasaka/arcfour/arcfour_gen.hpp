@@ -30,7 +30,24 @@ public:
 	~arcfour_gen()
 		{
 			x_=0; y_=0;
-			for(type i=0; i<0x100; ++i) state_[i]=i;
+			for(uint16_t i=0; i<0x100; ++i) state_[i]=static_cast<byte>(i);
+		}
+
+public:
+	arcfour_gen& operator=(arcfour_gen&& rhs)
+		{
+			x_=rhs.x_;
+			y_=rhs.y_;
+			state_=rhs.state_;
+
+			return *this;
+		}
+
+	void swap(arcfour_gen& another)
+		{
+			std::swap(x_, another.x_);
+			std::swap(y_, another.y_);
+			std::swap(state_, another.state_);
 		}
 
 public:
@@ -38,16 +55,18 @@ public:
 	void init(const RandomAccessRange& key)
 		{
 			x_=0; y_=0;
-			for(type i=0; i<0x100; ++i) state_[i]=i;
+			for(uint16_t i=0; i<0x100; ++i) state_[i]=static_cast<byte>(i);
 
 			type state_index=0; type key_index=0;
 			auto head_itr=std::begin(key);
+			auto itr=head_itr;
 			const uint32_t length=std::distance(std::begin(key), std::end(key));
-			const uint32_t loop_time=std::ceil(static_cast<double>(length)/0x100)*0x100;
+			const uint32_t loop_time=static_cast<uint32_t>(std::ceil(static_cast<double>(length)/0x100))*0x100;
 
 			for(uint32_t i=0; i<loop_time; ++i)
 			{
-				state_index+=*std::advance(head_itr, key_index)+state_[i];
+				itr=head_itr; std::advance(itr, key_index);
+				state_index+=(*itr)+state_[i];
 				std::swap(state_[state_index], state_[i]);
 
 				++key_index;

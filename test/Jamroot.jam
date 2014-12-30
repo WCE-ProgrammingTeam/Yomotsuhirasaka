@@ -1,0 +1,8 @@
+exe	Arcfour/endecrypt_text
+	: ./src/arcfour/endecrypt_text.cpp
+	: <cxxflags>-std=c++11
+	;
+
+install ./bin/Arcfour
+	: Arcfour/endecrypt_text
+	;

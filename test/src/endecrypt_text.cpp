@@ -36,13 +36,14 @@ FCT_BGN()
 			0xC4, 0x71, 0x4F, 0xDA
 		};
 
-		charz cipher; std::string plain; // the results
+		  // the results
 
 		FCT_TEST_BGN(arcfour_encrypt)
 		{
 			ys::arcfour::estream estr;
 			estr<<ys::key(password);
 			estr<<given_plain<<ys::endd;
+			charz cipher;
 			estr>>cipher;
 			fct_chk(cipher==given_cipher);
 		}
@@ -52,7 +53,8 @@ FCT_BGN()
 		{
 			ys::arcfour::dstream dstr;
 			dstr<<ys::key(password);
-			dstr<<cipher<<ys::endd;
+			dstr<<given_cipher<<ys::endd;
+			std::string plain;
 			dstr>>plain;
 			fct_chk(plain==given_plain);
 		}
@@ -67,14 +69,13 @@ FCT_BGN()
 			//given cipher
 		};
 
-		charz cipher; std::string plain; // the results
-
 		FCT_TEST_BGN(mugi_encrypt)
 		{
 			ys::mugi::estream estr;
 			estr<<ys::key(password);
 			estr<<ys::iv(init_vector);
 			estr<<given_plain<<ys::endd;
+			charz cipher;
 			estr>>cipher;
 			fct_chk(cipher==given_cipher);
 		}
@@ -85,7 +86,8 @@ FCT_BGN()
 			ys::mugi::dstream dstr;
 			dstr<<ys::(password);
 			dstr<<ys::iv(init_vector);
-			dstr<<cipher<<ys::endd;
+			dstr<<given_cipher<<ys::endd;
+			std::string plain;
 			dstr>>plain;
 			fct_chk(plain==given_plain);
 		}
@@ -106,14 +108,13 @@ FCT_BGN()
 			0x90, 0xF7, 0xC6, 0x1F, 0x3D, 0x76, 0x5F, 0x4D
 		};
 
-		charz cipher; std::string plain; // the results
-
 		FCT_TEST_BGN(aes256_cbc_encrypt)
 		{
 			ys::aes::estream estr;
 			estr << ys::key(password);
 			estr << ys::iv(init_vector);
 			estr << given_plain << ys::endd;
+			charz cipher;
 			estr >> cipher;
 			fct_chk(cipher == given_cipher);
 		}
@@ -124,7 +125,8 @@ FCT_BGN()
 			ys::aes::dstream dstr;
 			dstr << ys::key(password);
 			dstr << ys::iv(init_vector);
-			dstr << cipher << ys::endd;
+			dstr << given_cipher << ys::endd;
+			std::string plain;
 			dstr >> plain;
 			fct_chk(plain == given_plain);
 		}
@@ -145,14 +147,13 @@ FCT_BGN()
 			 0x9A, 0x7F, 0x34, 0xB9, 0xDE, 0x25, 0x39, 0x05
 		};
 
-		charz cipher; std::string plain; // the results
-	
 		FCT_TEST_BGN(twofish_cbc_encrypt)
 		{
 			ys::arcfour::estream estr;
 			estr << ys::key(password);
 			estr << ys::iv(init_vector);
 			estr << given_plain << ys::endd;
+			charz cipher;
 			estr >> cipher;
 			fct_chk(cipher == given_cipher);
 		}
