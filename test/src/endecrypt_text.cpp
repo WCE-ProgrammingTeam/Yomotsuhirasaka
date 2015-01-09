@@ -84,7 +84,7 @@ FCT_BGN()
 		FCT_TEST_END(mugi_decrypt)
 		{
 			ys::mugi::dstream dstr;
-			dstr<<ys::(password);
+			dstr<<ys::key(password);
 			dstr<<ys::iv(init_vector);
 			dstr<<given_cipher<<ys::endd;
 			std::string plain;
