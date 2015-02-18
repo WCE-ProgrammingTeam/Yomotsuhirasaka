@@ -1,0 +1,6 @@
+test/vs2013/Debug/
+
+test/vs2013/MUGI/Debug/
+test/vs2013/Arcfour/Debug/
+
+*.opensdf
