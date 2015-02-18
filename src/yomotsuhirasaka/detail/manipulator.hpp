@@ -18,4 +18,14 @@ struct key
 		{}
 };
 
+struct iv
+{
+	std::vector<uint8_t> iv_;
+
+	template<typename ForwardRange>
+	explicit iv(const ForwardRange& range)
+		: iv_(range.begin(), range.end())
+	{}
+};
+
 } // namespace yomotsuhirasaka

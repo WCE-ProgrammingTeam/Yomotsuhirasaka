@@ -21,6 +21,8 @@ charz init_vector=
 		0x73, 0x74, 0x72, 0x69, 0x6E, 0x67
 	};
 
+//乱数生成のテストも書く？
+
 TEST_CASE("mugi::estream/dstream can encrypt/decrypt bytes with mugi")
 {
 	charz given_cipher=
@@ -30,7 +32,7 @@ TEST_CASE("mugi::estream/dstream can encrypt/decrypt bytes with mugi")
 
 	SECTION("encrypt with mugi")
 	{
-		ys::mugi::estream estr;
+		ys::mugi::estream<> estr;
 		estr<<ys::key(password);
 		estr<<ys::iv(init_vector);
 		estr<<given_plain<<ys::endd;
@@ -42,7 +44,7 @@ TEST_CASE("mugi::estream/dstream can encrypt/decrypt bytes with mugi")
 	
 	SECTION("decrypt with mugi")
 	{
-		ys::mugi::dstream dstr;
+		ys::mugi::dstream<> dstr;
 		dstr<<ys::key(password);
 		dstr<<ys::iv(init_vector);
 		dstr<<given_cipher<<ys::endd;
@@ -51,4 +53,4 @@ TEST_CASE("mugi::estream/dstream can encrypt/decrypt bytes with mugi")
 		
 		CHECK(plain==given_plain);
 	}
-} // TEST_CASE("arcfour::estream/dstream can encrypt/decrypt bytes with Arcfour")
+} //TEST_CASE("mugi::estream/dstream can encrypt/decrypt bytes with mugi")

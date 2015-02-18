@@ -1,7 +1,12 @@
 #pragma once
 
-namespace yomotsuhirasaka {
+#include <memory>
+#include "estream.hpp"
+
+namespace yomotsuhirasaka	{
 namespace mugi			{
 
-} } // namespace ys::mugi
+template<class Allocator=std::allocator<int8_t>>
+using dstream=estream<Allocator>;
 
+} } // namespace yomotsuhirasaka::mugi

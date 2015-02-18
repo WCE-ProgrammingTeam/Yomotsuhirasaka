@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ヘッダー ファイル\endecrypt">
+      <UniqueIdentifier>{bbe5e99b-65a6-4f35-9990-1053d2c2f274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\detail">
+      <UniqueIdentifier>{ddef4ac9-1ce4-44d2-a835-ccb312f19f25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\catch.hpp">
@@ -20,6 +26,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\yomotsuhirasaka\yomotsuhirasaka.hpp">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\detail\manipulator.hpp">
+      <Filter>ヘッダー ファイル\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\detail\endian.hpp">
+      <Filter>ヘッダー ファイル\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\mugi\dstream.hpp">
+      <Filter>ヘッダー ファイル\endecrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\mugi\estream.hpp">
+      <Filter>ヘッダー ファイル\endecrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\mugi\estreambuf.hpp">
+      <Filter>ヘッダー ファイル\endecrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\mugi\mugi_gen.hpp">
+      <Filter>ヘッダー ファイル\endecrypt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

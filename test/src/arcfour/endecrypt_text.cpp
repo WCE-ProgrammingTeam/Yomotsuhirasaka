@@ -55,4 +55,5 @@ TEST_CASE("arcfour::estream/dstream can encrypt/decrypt bytes with Arcfour")
 
 		CHECK(plain==given_plain);
 	}
+
 } // TEST_CASE("arcfour::estream/dstream can encrypt/decrypt bytes with Arcfour")

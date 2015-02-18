@@ -64,6 +64,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\detail\endian.hpp" />
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\detail\manipulator.hpp" />
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\mugi\dstream.hpp" />
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\mugi\estream.hpp" />
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\mugi\estreambuf.hpp" />
+    <ClInclude Include="..\..\..\src\yomotsuhirasaka\mugi\mugi_gen.hpp" />
     <ClInclude Include="..\..\..\src\yomotsuhirasaka\yomotsuhirasaka.hpp" />
     <ClInclude Include="..\..\src\catch.hpp" />
   </ItemGroup>
