@@ -3,6 +3,7 @@
 #include <algorithm> // for std::swap
 #include <array>
 #include <iterator>
+#include "../detail/endian.hpp"
 
 namespace yomotsuhirasaka	{
 namespace mugi			{
@@ -69,10 +70,20 @@ public:
 
 		const uint32_t loop_time = std::min<uint32_t>(key_length, length);
 		
-		uint32_t i = 0;
+		uint32_t j = 0;
 		
-		for (; i < loop_time; ++i) key_[i] = static_cast<type>(key[i]);
-		for (; i < key_length; ++i) key_[i] = 0;	//padding
+		for (; j < loop_time; ++j) key_[j] = static_cast<type>(key[j]);
+		for (; j < key_length; ++j) key_[j] = 0;	//padding
+
+		if (yomotsuhirasaka::detail::sys_is_big_endian())
+		{
+			return;
+		}
+
+		for (uint8_t i = 0; i<(key_.size() >> 1); ++i)
+		{
+			std::swap(key_[i], key_[key_.size() - i - 1]);
+		}
 	}
 
 	template<class RandomAccessRange>
@@ -87,7 +98,19 @@ public:
 		for (; i < loop_time; ++i) iv_[i] = static_cast<type>(iv[i]);
 		for (; i < iv_length; ++i) iv_[i] = 0;	//padding
 
+		//TODO//ここでエンディアン変更
+
+		if (yomotsuhirasaka::detail::sys_is_big_endian())
+		{
+			return;
+		}
+
+		for (uint8_t i = 0; i<(iv_.size() >> 1); ++i)
+		{
+			std::swap(iv_[i], iv_[iv_.size() - i - 1]);
+		}
 		init();//ivをセットしたら初期状態を作成
+
 	}
 
 	//乱数生成
