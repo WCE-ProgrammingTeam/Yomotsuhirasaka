@@ -113,7 +113,15 @@ public:
 
 	}
 
-	//乱数生成
+private:
+	//内部状態をアップデートする
+	void update()
+	{
+		//TODO
+	}
+
+public:
+	//出力対象の1ユニット（ステートの上位ユニット）から、1バイトずつ出力する
 	type operator()()
 	{
 		//require set_key(key), set_iv(iv);
